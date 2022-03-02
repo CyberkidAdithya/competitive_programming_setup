@@ -36,11 +36,13 @@ import re
 import string
 import sys
 import time
+import random
 from io import BytesIO, IOBase
 import math
+import itertools
 import functools
 import collections
-# import bisect, heapq, numpy, statistics
+# import array, bisect, heapq, numpy, statistics
 # from contextlib import contextmanager
 # from jinja2 import Template
 #--MODULES ENDS--
@@ -53,7 +55,7 @@ import collections
 # from statistics import mode
 # from functools import reduce
 # from bisect import bisect
-# from collections import defaultdict, Counter
+from collections import defaultdict as dd, Counter as cc
 # hp = defaultdict(lambda: 0)
 # hp = collections.defaultdict(int, collections.Counter(lis))
 # lis = sorted(hp.items(), key = lambda kv:(kv[1], kv[0]))
@@ -145,31 +147,33 @@ class ConstantMod:
 
 #--FUNCTIONS BEGINS--
 
-
 def solve():
     # YOUR CODE HERE
     # global modobj
     # print(modobj.value(int(1e15)))  #setting modobj._modd from None to given param
     try:
         queries = 1
-        queries = int(input())
-        # s1 = "Yes"
-        # s2 = "No"
-        # def myFunc(e):
-        #     return e % 2
+        queries = inum()
         for query in range(queries):
             try:
-                greet = istr()
-                print(greet)
-                size = inum()
-                arr = ilist()
-                print(arr)
-                while False:
-                    # print("helloworld")
-                    # n = inum()
-                    # arr = ilist()
-                    if True:
-                        break
+                # print("Hello World!")
+                # hp = dd(lambda:0)
+                n = int(input())
+                lis = ilist()
+                arr = list()
+                for x in range(n):
+                    if lis[x] == 0:
+                        arr.append(1)
+                    else:
+                        arr.append(0)
+                res = 0
+                for x in range(n):
+                    for y in range(x, n):
+                        con = arr[x: y + 1]
+                        tot = sum(con)
+                        siz = len(con)
+                        res += tot + siz
+                print(res)
             except EOFError as e1:  # end of input file
                 print("Error_inner: ", e1)
                 break
